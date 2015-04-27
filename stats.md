@@ -26,13 +26,16 @@ test
 
 
 
-#This is a list:
+---
 
-    * Item 1
-        * item a
-            * subitems
+
+#This is a list
+
+* Item 1
+    * item a
+    * subitems
         * item b
-    * Item 2
+* Item 2
 
 
 
