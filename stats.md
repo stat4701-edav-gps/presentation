@@ -6,11 +6,11 @@ test
 * test
 
 
-  code code
-  if:
-    do something
-  elif:
-    print
+    code code
+    if:
+      do something
+    elif:
+      print
   
 
 
