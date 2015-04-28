@@ -9,6 +9,7 @@
     * In this case census blocks
     * Polygons
 
+![gps](https://github.com/embruze/taxi/blob/master/images/Aerial.jpg)
 
 
 
@@ -127,8 +128,12 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
 
 
 
+
+
 ##Zip Code Neighbors
 ![gps](https://github.com/embruze/taxi/blob/master/images/Neighbor%20Defs.jpg)
+
+
 
 
 
@@ -152,12 +157,28 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
       main = "Autocorrelated Variable",
       cex.main = 0.8, cex.lab = 0.8)
 
+
+
+
+
+
 ---
 ##GPS error location in New York City is (sort of) spatially dependent
 ![gps](https://github.com/embruze/taxi/blob/master/images/Autocorr4.png)
 
+
+
+
+
+
+
+
+
 ##How does that relate to building density?
 ![gps](https://github.com/embruze/taxi/blob/master/images/BIGQ.png)
+
+
+
 
 ---
 
@@ -167,12 +188,34 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
       sql_block <- "SELECT * FROM [dazzling-will-91618:taxi_all.nycb2010_stats_all]" # geoid census block 2010
       sql_points <- "SELECT tuid FROM [dazzling-will-91618:taxitest.taxi5]" # lat/lon points 
 
+      dfs <- query_exec(sql_stats, project = project,)
+      dfb <- query_exec(sql_block, project = project,)
+      dfp <- query_exec(sql_points, project = project, max_pages = Inf)
+
+
+
+##Clean up the data
+* Drop blocks with missing heights
+* Drop blocks with missing building counts
+* Drop blocks with missing GPS counts
+      dfb2 <- dfb
+      dfb2$dist_bldg_hght[dfb2$dist_bldg_hght<=0] <- NA
+      dfb2$count[dfb2$countbldg<=0] <- NA
+      dfb2$count[dfb2$count<=0] <- NA
+      dfb2 <- dfb2[complete.cases(dfb2), ]
+
+
+
+
+
+
+
 
 ![gps](http://images.amazon.com/images/G/01/electronics/detail-page/B001VEJEGK-1.jpg)
 
 [link](http://images.amazon.com/images/G/01/electronics/detail-page/B001VEJEGK-1.jpg) 
 
-##Section 2, more content
+
 
 
 
