@@ -266,6 +266,8 @@ Maximum pick up/drop off points per block 5,654,000
 
 
 ##Probability plots
+![gps](https://github.com/embruze/taxi/blob/master/images/qqplots.jpg)
+
 
 
 
