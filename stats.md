@@ -237,6 +237,17 @@ Maximum pick up/drop off points per block 5,654,000
 
 
 
+
+![gps](https://github.com/embruze/taxi/blob/master/images/GPS%20error.png)
+
+
+
+
+
+
+
+
+
 [link](http://images.amazon.com/images/G/01/electronics/detail-page/B001VEJEGK-1.jpg) 
 
 
