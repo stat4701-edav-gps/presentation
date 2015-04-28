@@ -197,12 +197,12 @@ Step 1: Read in census block (or zip code) shapefile from the  [NYC Department o
       sql_master <- "SELECT * FROM [dazzling-will-91618:taxi_all.taxi_all_2013]" # master
       sql_block <- "SELECT * FROM [dazzling-will-91618:taxi_all.nycb2010_stats_all]" # geoid census block 2010
       sql_points <- "SELECT tuid FROM [dazzling-will-91618:taxitest.taxi5]" # lat/lon points 
+      sql_random <- "(SELECT rand() as random, 
+                     * FROM [pdazzling-will-91618:taxitest.taxi5] ORDER BY random) LIMIT 10000" #random sample
 
       dfs <- query_exec(sql_stats, project = project,)
       dfb <- query_exec(sql_block, project = project,)
-      dfp <- query_exec(sql_points, project = project, max_pages = Inf)
-
-
+      dfr <- query_exec(sql_random, project = project, max_pages = Inf)
 
 ##Clean up the data
 * Drop blocks with missing heights
@@ -323,6 +323,9 @@ Every 1-unit increase in distributed building height was associated with approxi
 0.17, 95% CI = 0.15–0.19, Adjusted R-squared 0.0089) 
 
 
+
+
+##Next steps in the analysis, try to model the points!
 ---
 
 
