@@ -9,6 +9,8 @@
     * In this case census blocks
     * Polygons
 
+
+
 ![gps](https://github.com/embruze/taxi/blob/master/images/Aerial.jpg)
 
 
@@ -112,7 +114,7 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
 
 
 
-##In Comparison - Zip Code Neighbors
+##In comparison - Zip code neighbors
 
      library(tripack)
      coords <- coordinates(nycZIPS2)
@@ -208,10 +210,32 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
 
 
 
+##Block data
+* 38,716 census blocks total
+* 3,924 blocks with missing building info
+* 772 with missing building count info 
+* 1,230 with missing trip counts (entire count metric missing not missing 1 count)
+
+## Final sample 
+32,790 block
+Average block: 32 buildings
+1 building blocks: 6,974
+Average pick up and drop off points per block: 8,668
+Maximum pick up/drop off points per block 5,654,000 
 
 
 
-![gps](http://images.amazon.com/images/G/01/electronics/detail-page/B001VEJEGK-1.jpg)
+![gps](https://github.com/stat4701-edav-gps/gps-taxi/blob/master/img/cartodb_screenshot.png)
+
+
+
+
+![gps](https://github.com/embruze/taxi/blob/master/images/DBH.png)
+
+
+
+
+
 
 [link](http://images.amazon.com/images/G/01/electronics/detail-page/B001VEJEGK-1.jpg) 
 
