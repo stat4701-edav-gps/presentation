@@ -2,7 +2,7 @@
 <!--Please try and use ## (h2) for titles on the slides as the # (which is h1)-->
 
 
-##Two Analytic Approaches
+##Two analytic approaches
 * Individual geographical points 
     * latitude and longitude of each pickup and dropoff
 * Aerial units 
@@ -33,7 +33,7 @@
 
 
 
-#Point based analysis
+##Point based analysis
 347 million latitude and longitude points is perhaps too complex for this anlaysis. 
 But, we can take a random sample
 Big Query random sample code
@@ -43,7 +43,7 @@ Big Query random sample code
 
 
 
-#Block based analysis
+##Block based analysis
 Examining block-level data makes sense because distributed building height and distance to roadbed were calculated for each census block
 
 
@@ -51,7 +51,7 @@ Examining block-level data makes sense because distributed building height and d
 
 
 
-#How do you define a neighbor?
+##How do you define a neighbor?
 * Do the polygons share a border?
 * How many degrees are they away from each other (six degrees of Kevin Bacon)?
 
@@ -61,7 +61,7 @@ Examining block-level data makes sense because distributed building height and d
 
 
 
-#How do you actually accomplish this in R?
+##How do you actually accomplish this in R?
 Step 1: Read in census block (or zip code) shapefile from the NYC Department of City Planning [link](http://www.nyc.gov/html/dcp/html/bytes/districts_download_metadata.shtml)
       
     library(maptools)
@@ -73,7 +73,8 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
     
     
 ---
-#Step 2: Create neighbors using spdep package in R
+##Step 2: Create neighbors 
+* spdep package in R
 * poly2nb() function in spdep takes spatial polygons and returns a list of neighbors 
 
         library(sp)
@@ -100,7 +101,7 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
 
 
 
-#Census Block Neighbors
+##Census block neighbors
 ![gps](https://github.com/embruze/taxi/blob/master/images/Polygons.png)
 
 
@@ -110,7 +111,7 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
 
 
 
-#In Comparison - Zip Code Neighbors
+##In Comparison - Zip Code Neighbors
 
      library(tripack)
      coords <- coordinates(nycZIPS2)
@@ -126,20 +127,45 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
 
 
 
-#Zip Code Neighbors
+##Zip Code Neighbors
 ![gps](https://github.com/embruze/taxi/blob/master/images/Neighbor%20Defs.jpg)
 
 
 
 
 
+##Step 3: Assign spatial weights and test 
+
+
+      block.wts <- nb2listw(block.nb3, 
+                   zero.policy = T, style = "B")
+      print(block.wts, zero.policy = T)
+      names(block.wts)      
+      set.seed(987654)
+      n <- length(block.nb3)
+      uncorr.x <- rnorm(n)
+      rho <- 0.05
+      autocorr.x <- invIrW(block.wts, rho, 
+                     feasible = TRUE) %*% uncorr.x
+      plot(autocorr.x, lag(block.wts, autocorr.x), 
+      xlab = "Autocorrelated Variable",
+      main = "Autocorrelated Variable",
+      cex.main = 0.8, cex.lab = 0.8)
+
+---
+##GPS error location in New York City is (sort of) spatially dependent
+![gps](https://github.com/embruze/taxi/blob/master/images/Autocorr4.png)
+
+##How does that relate to building density?
+![gps](https://github.com/embruze/taxi/blob/master/images/BIGQ.png)
+
 ---
 
-
-
-
-
----
+##Create big query query
+      project <- "dazzling-will-91618" # project name
+      sql_master <- "SELECT * FROM [dazzling-will-91618:taxi_all.taxi_all_2013]" # master
+      sql_block <- "SELECT * FROM [dazzling-will-91618:taxi_all.nycb2010_stats_all]" # geoid census block 2010
+      sql_points <- "SELECT tuid FROM [dazzling-will-91618:taxitest.taxi5]" # lat/lon points 
 
 
 ![gps](http://images.amazon.com/images/G/01/electronics/detail-page/B001VEJEGK-1.jpg)
