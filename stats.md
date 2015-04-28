@@ -158,12 +158,19 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
       xlab = "Autocorrelated Variable",
       main = "Autocorrelated Variable",
       cex.main = 0.8, cex.lab = 0.8)
-
-
-
-
-
-
+      moran.x <- moran.test(autocorr.x, listw = block.wts, zero.policy = T)
+      moran.x
+      moran.cases <- moran.test(block2$cases, listw = block.wts, + 
+         zero.policy = TRUE)
+      moran.cases
+       
+      Morans I test under randomisation
+      data:  block2$cases
+      weights: block.wts
+      Moran I statistic standard deviate = .2337, p-value < 2.2e-16
+      
+      
+      
 ---
 ##GPS error location in New York City is (sort of) spatially dependent
 ![gps](https://github.com/embruze/taxi/blob/master/images/Autocorr4.png)
@@ -283,6 +290,24 @@ Maximum pick up/drop off points per block 5,654,000
 
 
 ##Regression moodels
+
+
+
+
+
+
+
+##Transformations
+      dfb2$mavgbrdist <- dfb2$avgbrdist*0.3048 
+      dfb2$mavgbrdist1 <- dfb2$avgbrdist+.00000001
+      dfb2$logmavgbrdist1 <- log(dfb2$mavgbrdist1)
+
+      fit1 <- lm(dfb2$dist_bldg_hght ~ dfb2$logmavgbrdist1)
+      summary(fit1) 
+      confint(fit1, level=0.95)
+
+      Every 1-unit increase in distributed building height was associated with roughly a 17% increase in distance from roadbed
+      (0.17, 95% CI = 0.15–0.19) Adjusted R-squared:  0.0089 
 ---
 
 
