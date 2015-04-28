@@ -305,23 +305,13 @@ Maximum pick up/drop off points per block 5,654,000
       fit1 <- lm(dfb2$dist_bldg_hght ~ dfb2$logmavgbrdist1)
       summary(fit1) 
       confint(fit1, level=0.95)
+      
+      fit2 <- update(block.model, correlation = corGaus(.1,form = ~x+z), method = "ML")
+      summary(fit2)
 
-      Every 1-unit increase in distributed building height was associated with roughly a 17% increase in distance from roadbed
-      (0.17, 95% CI = 0.15–0.19) Adjusted R-squared:  0.0089 
+Every 1-unit increase in distributed building height was associated with approximately a 17% increase in distance from roadbed
+0.17, 95% CI = 0.15–0.19, Adjusted R-squared 0.0089) 
 ---
-
-
-[link](http://images.amazon.com/images/G/01/electronics/detail-page/B001VEJEGK-1.jpg) 
-
-
-#This is a list
-
-* Item 1
-    * item a
-    * subitems
-        * item b
-* Item 2
-
 
 
 
