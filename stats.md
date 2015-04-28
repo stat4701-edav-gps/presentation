@@ -257,7 +257,7 @@ Maximum pick up/drop off points per block 5,654,000
 
 ##Highly skewed distributions (histograms)
 ![gps](https://github.com/embruze/taxi/blob/master/images/histDBH.png)
-
+![gps](https://github.com/embruze/taxi/blob/master/images/Dist%20DR.png)
 
 
 
