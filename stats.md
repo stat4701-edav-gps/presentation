@@ -185,6 +185,7 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
 ---
 
 ##Create big query query
+      library(bigrquery)
       project <- "dazzling-will-91618" # project name
       sql_master <- "SELECT * FROM [dazzling-will-91618:taxi_all.taxi_all_2013]" # master
       sql_block <- "SELECT * FROM [dazzling-will-91618:taxi_all.nycb2010_stats_all]" # geoid census block 2010
