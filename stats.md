@@ -1,7 +1,3 @@
-
-<!--Please try and use ## (h2) for titles on the slides as the # (which is h1)-->
-
-
 ##Two analytic approaches
 * Individual geographical points 
     * latitude and longitude of each pickup and dropoff
