@@ -281,7 +281,8 @@ Maximum pick up/drop off points per block 5,654,000
 
 
 
-##Outliers (boxplots)
+#Much more exploratory code on github [link](https://github.com/stat4701-edav-gps/taxi-analysis/tree/master/EDA)
+
 
 
 
@@ -308,9 +309,12 @@ Maximum pick up/drop off points per block 5,654,000
       
       fit2 <- update(block.model, correlation = corGaus(.1,form = ~x+z), method = "ML")
       summary(fit2)
-
+      
+##
 Every 1-unit increase in distributed building height was associated with approximately a 17% increase in distance from roadbed
 0.17, 95% CI = 0.15–0.19, Adjusted R-squared 0.0089) 
+
+
 ---
 
 
