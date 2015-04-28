@@ -231,8 +231,23 @@ Maximum pick up/drop off points per block 5,654,000
 
 
 
+
+
+
+
+
+
+
+##Distributed building height
 ![gps](https://github.com/embruze/taxi/blob/master/images/DBH.png)
 
+
+
+
+
+
+##GPS error
+![gps](https://github.com/embruze/taxi/blob/master/images/GPS%20error.png)
 
 
 
@@ -241,8 +256,7 @@ Maximum pick up/drop off points per block 5,654,000
 
 ![gps](https://github.com/embruze/taxi/blob/master/images/GPS%20error.png)
 
-
-
+##Highly skewed distributions
 
 
 
