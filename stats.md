@@ -254,22 +254,37 @@ Maximum pick up/drop off points per block 5,654,000
 
 
 
-![gps](https://github.com/embruze/taxi/blob/master/images/GPS%20error.png)
 
-##Highly skewed distributions
-
-
+##Highly skewed distributions (histograms)
+![gps](https://github.com/embruze/taxi/blob/master/images/histDBH.png)
 
 
+
+
+
+
+
+
+##Probability plots
+
+
+
+
+
+
+##Outliers (boxplots)
+
+
+
+
+
+
+
+##Regression moodels
+---
 
 
 [link](http://images.amazon.com/images/G/01/electronics/detail-page/B001VEJEGK-1.jpg) 
-
-
-
-
-
----
 
 
 #This is a list
