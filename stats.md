@@ -12,11 +12,13 @@
 
 
 
+
 ##Aerial data are subject to many analytic difficulties 
 * Weird geographic categorizations (i.e. congressional districts)
 * Spatial autocorrelation
     * Idea that things next to each other are likely to be more similar than things far apart from each other
     * A tall building on block is likely to be surrounded by other tall buildings 
+
 
 
 
@@ -29,10 +31,15 @@
 
 
 
+
+
 #Point based analysis
-347 million latitude and longitude points is perhaps too complex for this anlaysis
+347 million latitude and longitude points is perhaps too complex for this anlaysis. 
 But, we can take a random sample
 Big Query random sample code
+
+
+
 
 
 
@@ -41,18 +48,29 @@ Examining block-level data makes sense because distributed building height and d
 
 
 
+
+
+
 #How do you define a neighbor?
 * Do the polygons share a border?
 * How many degrees are they away from each other (six degrees of Kevin Bacon)?
 
 
-#How do you actually do this in R?
+
+
+
+
+
+#How do you actually accomplish this in R?
 Step 1: Read in census block (or zip code) shapefile from the NYC Department of City Planning [link](http://www.nyc.gov/html/dcp/html/bytes/districts_download_metadata.shtml)
-      
       
     library(maptools)
         block <- readShapePoly('/Users/emiliebruzelius/Desktop/git/taxi/taxi/nycb2010_15a/nycb2010.shp')
         zips <- readShapePoly('/Users/emiliebruzelius/Desktop/git/taxi/taxi/nyc2010/nyc2010.shp')
+    
+    
+    
+    
     
 ---
 #Step 2: Create neighbors using spdep package in R
@@ -80,16 +98,46 @@ Step 1: Read in census block (or zip code) shapefile from the NYC Department of 
 
 
 
-![gps](http://images.amazon.com/images/G/01/electronics/detail-page/B001VEJEGK-1.jpg)
+
+
+#Census Block Neighbors
+![gps](https://github.com/embruze/taxi/blob/master/images/Polygons.png)
 
 
 
-    code code
-    if:
-      do something
-    elif:
-      print
-  
+
+
+
+
+
+#In Comparison - Zip Code Neighbors
+
+     library(tripack)
+     coords <- coordinates(nycZIPS2)
+     IDs <- row.names(coords)
+     nycZIPS.nb4 <- tri2nb(coords, row.names = IDs)
+     plot(nycZIPS.nb4, coords, pch = ".", col = "red")
+     plot(nycZIPS2, add = T)
+
+
+
+
+
+
+
+
+#Zip Code Neighbors
+![gps](https://github.com/embruze/taxi/blob/master/images/Neighbor%20Defs.jpg)
+
+
+
+
+
+---
+
+
+
+
 
 ---
 
