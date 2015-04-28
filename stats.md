@@ -65,7 +65,7 @@ Examining block-level data makes sense because distributed building height and d
 
 
 ##How do you actually accomplish this in R?
-Step 1: Read in census block (or zip code) shapefile from the NYC Department of City Planning [link](http://www.nyc.gov/html/dcp/html/bytes/districts_download_metadata.shtml)
+Step 1: Read in census block (or zip code) shapefile from the  [NYC Department of City Planning](http://www.nyc.gov/html/dcp/html/bytes/districts_download_metadata.shtml)
       
     library(maptools)
         block <- readShapePoly('/Users/emiliebruzelius/Desktop/git/taxi/taxi/nycb2010_15a/nycb2010.shp')
@@ -281,7 +281,7 @@ Maximum pick up/drop off points per block 5,654,000
 
 
 
-#Much more exploratory code on github [link](https://github.com/stat4701-edav-gps/taxi-analysis/tree/master/EDA)
+#Much more exploratory code on [github](https://github.com/stat4701-edav-gps/taxi-analysis/tree/master/EDA)
 
 
 
